@@ -5,21 +5,22 @@ const list = document.querySelector('#todo-list');
 let todos = [];
 
 function updateList(){
-    list.innerHTML = " ";
+    list.innerHTML = '';
     for (let todo of todos){
         const item = document.createElement('li');
-        item.innerHTML - `
-        <span class="todo-text">$(todo.text)</span>
-        <button class="complete-button">Complete</button>
-        <button class="delete-button">Delete</button>
+        item.innerHTML = `
+            <span class="todo-text">${todo.text}</span>
+            <button class="complete-button">Complete</button>
+            <button class="delete-button">Delete</button>
         `;
         if(todo.completed){
             item.classList.add('completed');
-        }list.appendChild(item);
+        }
+        list.appendChild(item);
     }
 }
 
-function addTodo(){
+function addTodo(text){
     const newTodo = {
         text,
         completed: false
@@ -30,7 +31,7 @@ function addTodo(){
 
 form.addEventListener('submit', event => {
     event.preventDefault();
-    const text = input.ariaValueMax;
+    const text = input.value;
     if(text){
         addTodo(text);
         input.value = ' ';
